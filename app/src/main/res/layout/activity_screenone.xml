@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/work"
+    tools:context=".screen.Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/maiLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_gradiant"
+        android:padding="20sp"
+        tools:layout_editor_absoluteX="-43dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_dark"
+            android:gravity="center_horizontal"
+            android:paddingTop="80sp"
+            android:text="WeBlog"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.026"
+            tools:layout_editor_absoluteX="24dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/text22"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="116dp"
+            android:gravity="center_horizontal"
+            android:text="Start Blogging Today"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp">
+
+        </TextView>
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/login_button"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            app:backgroundTint="#FFFFFF"
+            app:layout_constraintTop_toBottomOf="@+id/text22"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="20dp">
+
+        </Button>
+
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="match_parent"
+            android:layout_height="55sp"
+            android:background="@drawable/signup_button"
+            android:text="Signup"
+            android:textColor="@color/teal_darker"
+            app:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+            app:layout_constraintVertical_bias="0.281"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp">
+
+        </Button>
+
+        <ImageView
+            android:id="@+id/google"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="76dp"
+            android:layout_marginLeft="76dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="60dp"
+            android:backgroundTint="@android:color/transparent"
+            android:src="@drawable/google_plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signupBtn"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/fbBtn"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/facebook"
+            app:layout_constraintStart_toEndOf="@+id/google"
+            app:layout_constraintTop_toBottomOf="@+id/signupBtn">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/appleBtn"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginTop="32dp"
+            android:src="@drawable/apple"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.127"
+            app:layout_constraintStart_toEndOf="@+id/fbBtn"
+            app:layout_constraintTop_toBottomOf="@+id/signupBtn">
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

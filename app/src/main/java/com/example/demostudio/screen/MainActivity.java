@@ -2,6 +2,7 @@ package com.example.demostudio.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.demostudio.R;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,9 +32,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.demostudio.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserInfo;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     GoogleSignInClient googleSignInClient;
     private GoogleSignInOptions gso;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,18 +66,38 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull @NotNull Task<Void> task) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                List<? extends UserInfo> infos = user.getProviderData();
+                for (UserInfo ui : infos) {
+                    if (ui.getProviderId().equals(GoogleAuthProvider.PROVIDER_ID)) {
+                        Log.d("provider", "user: " + ui);
+                        googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull @NotNull Task<Void> task) {
 
+                                Intent intent = new Intent(MainActivity.this, screenone.class);
+                                // set the new task and clear flags
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                FirebaseAuth.getInstance().signOut();
+
+                                Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else if (ui.getProviderId().equals(FacebookAuthProvider.PROVIDER_ID)) {
+                        Log.d("provider", "user: " + ui);
+
+                        LoginManager.getInstance().logOut();
+                        FirebaseAuth.getInstance().signOut();
                         Intent intent = new Intent(MainActivity.this, screenone.class);
                         // set the new task and clear flags
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
-                        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+
                     }
-                });
+                }
+
+
             }
         });
 
@@ -91,6 +120,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -103,5 +137,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-    
+
 }

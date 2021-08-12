@@ -99,17 +99,27 @@
 
         </ImageView>
 
-        <ImageView
-            android:id="@+id/fbBtn"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="50dp"
+            android:layout_height="80dp"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="32dp"
-            android:src="@drawable/facebook"
             app:layout_constraintStart_toEndOf="@+id/google"
             app:layout_constraintTop_toBottomOf="@+id/signupBtn">
-        </ImageView>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/fbBtn"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_marginTop="32dp"-->
+<!--                android:src="@drawable/facebook"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/google"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/signupBtn" />-->
+        </com.facebook.login.widget.LoginButton>
 
         <ImageView
             android:id="@+id/appleBtn"
@@ -117,10 +127,13 @@
             android:layout_height="50sp"
             android:layout_marginTop="32dp"
             android:src="@drawable/apple"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.127"
-            app:layout_constraintStart_toEndOf="@+id/fbBtn"
+            app:layout_constraintStart_toEndOf="@+id/login_button"
             app:layout_constraintTop_toBottomOf="@+id/signupBtn">
         </ImageView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

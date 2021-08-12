@@ -2,7 +2,6 @@ package com.example.demostudio.screen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.example.demostudio.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -35,9 +33,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.UserInfo;
 
-import java.util.List;
 
 
 public class screenone extends AppCompatActivity {
@@ -79,24 +75,11 @@ public class screenone extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
 
         loginButton.setReadPermissions("email", "public_profile");
-//        fbBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                loginButton.performClick();
-//            }
-//        });
+
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-//                loginResult.getAccessToken();
-//                loginResult.getRecentlyDeniedPermissions();
-//                loginResult.getRecentlyGrantedPermissions();
-//                getUserProfile(AccessToken.getCurrentAccessToken());
                 handleFacebookAccessToken(loginResult.getAccessToken());
-
-                boolean loggedIn = AccessToken.getCurrentAccessToken() == null;
-                Log.d("API123", loggedIn + " ??");
-
             }
 
             @Override
@@ -122,11 +105,6 @@ public class screenone extends AppCompatActivity {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
-
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -168,7 +146,6 @@ public class screenone extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
-//        updateUI(currentUser);
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
@@ -182,11 +159,9 @@ public class screenone extends AppCompatActivity {
                             Log.d("TAG", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Log.d("user", ": " + user);
-//                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
-//                            updateUI(null);
                         }
                     }
                 });
@@ -230,7 +205,6 @@ public class screenone extends AppCompatActivity {
                             Log.w("TAG", "signInWithCredential:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
                         }
                     }
                 });

@@ -19,5 +19,11 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="bithday">Bithday</string>
+    <string name="weblog">WeBlog</string>
+    <string name="gender">Gender</string>
+    <string name="re_enter_password">Re-Enter Password</string>
+    <string name="password">Password</string>
+    <string name="i_agree_with_terms_and_conditions">I agree with terms and conditions</string>
+    <string name="signup">Signup</string>
 
 </resources>

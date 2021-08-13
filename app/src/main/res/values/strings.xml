@@ -15,5 +15,9 @@
 
     <string name="facebook_app_id">683003619328679</string>
     <string name="fb_login_protocol_scheme">fb683003619328679</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="bithday">Bithday</string>
 
 </resources>

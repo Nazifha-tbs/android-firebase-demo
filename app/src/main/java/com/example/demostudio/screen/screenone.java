@@ -38,7 +38,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class screenone extends AppCompatActivity {
     LoginButton loginButton;
-    Button login;
+    Button login,signup;
     ImageView googleBtn, fbBtn, appleBtn;
     private static final int RC_SIGN_IN = 0;
     GoogleSignInClient googleSignInClient;
@@ -56,11 +56,16 @@ public class screenone extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_screenone);
         login = findViewById(R.id.loginBtn);
+        signup = findViewById(R.id.signupBtn);
         googleBtn = findViewById(R.id.google);
 //        fbBtn = findViewById(R.id.fbBtn);
         appleBtn = findViewById(R.id.appleBtn);
         login.setOnClickListener(view -> {
             Intent i = new Intent(screenone.this, Login.class);
+            startActivity(i);
+        });
+        signup.setOnClickListener(view -> {
+            Intent i = new Intent(screenone.this, Signup.class);
             startActivity(i);
         });
         googleBtn.setOnClickListener(new View.OnClickListener() {

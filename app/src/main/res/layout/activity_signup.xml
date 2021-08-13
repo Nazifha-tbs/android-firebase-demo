@@ -293,6 +293,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <CheckBox
+        android:id="@+id/termsNcondition"
         android:layout_width="25dp"
         android:layout_height="27dp"
         android:layout_marginTop="8dp"

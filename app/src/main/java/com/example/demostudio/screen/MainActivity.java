@@ -5,10 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
-
-import com.appsflyer.AFInAppEventParameterName;
-import com.appsflyer.AFInAppEventType;
-import com.appsflyer.AppsFlyerLib;
 import com.example.demostudio.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -31,10 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserInfo;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                assert user != null;
                 List<? extends UserInfo> infos = user.getProviderData();
                 for (UserInfo ui : infos) {
                     if (ui.getProviderId().equals(GoogleAuthProvider.PROVIDER_ID)) {

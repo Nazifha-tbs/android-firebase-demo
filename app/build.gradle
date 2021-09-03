@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.demostudio"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -52,6 +52,18 @@ dependencies {
     implementation 'com.facebook.android:facebook-login:[8.1)'
     implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
     implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.appsflyer:af-android-sdk:5.0.0@aar'
+    implementation 'com.android.installreferrer:installreferrer:1.0'
 
+    def airshipVersion = "14.6.0"
+
+    // FCM push provider
+    implementation "com.urbanairship.android:urbanairship-fcm:$airshipVersion"
+
+    // Message Center
+    implementation "com.urbanairship.android:urbanairship-message-center:$airshipVersion"
+
+    // In-App Automation
+    implementation "com.urbanairship.android:urbanairship-automation:$airshipVersion"
 
 }

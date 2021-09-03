@@ -11,6 +11,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.appsflyer.AFInAppEventParameterName;
+import com.appsflyer.AFInAppEventType;
+import com.appsflyer.AppsFlyerLib;
 import com.example.demostudio.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -34,6 +38,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class screenone extends AppCompatActivity {
@@ -50,6 +56,8 @@ public class screenone extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
 
         super.onCreate(savedInstanceState);
+        initializeAppsFlyer();
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
         getSupportActionBar().hide();
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -188,7 +196,16 @@ public class screenone extends AppCompatActivity {
         Intent intent = new Intent(screenone.this, MainActivity.class);
         startActivity(intent);
     }
+    void initializeAppsFlyer(){
+        AppsFlyerLib.getInstance().startTracking(this.getApplication(), "XnBsSfxcreNR8jBXRXweJV");
 
+        Map<String, Object> eventValue = new HashMap<String, Object>();
+        eventValue.put(AFInAppEventParameterName.REVENUE, 400);
+        eventValue.put(AFInAppEventParameterName.CONTENT_TYPE, "category_a");
+        eventValue.put(AFInAppEventParameterName.CONTENT_ID, "1234567");
+        eventValue.put(AFInAppEventParameterName.CURRENCY, "USD");
+        AppsFlyerLib.getInstance().trackEvent(getApplicationContext(), AFInAppEventType.PURCHASE, eventValue);
+    }
     private void handleFacebookAccessToken(AccessToken token) {
         Log.d("TAG", "handleFacebookAccessToken:" + token);
 
@@ -215,4 +232,5 @@ public class screenone extends AppCompatActivity {
                 });
 
     }
+
 }

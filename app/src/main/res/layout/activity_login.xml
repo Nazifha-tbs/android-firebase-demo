@@ -44,6 +44,7 @@
         </ImageView>
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_marginStart="20dp"
@@ -75,6 +76,7 @@
         </ImageView>
 
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:layout_marginStart="20dp"
